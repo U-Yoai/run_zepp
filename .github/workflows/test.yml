@@ -1,0 +1,32 @@
+name: WeChat_Run My Python
+
+on:
+  push:
+  schedule:
+  # 定时任务，在每天的5点执行
+    - cron: '0 21 * * *'
+
+jobs:
+
+  run-python-script:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-python@v2
+      
+        with:
+          python-version: '3.9.12'
+          
+      - run: pip install requests
+      - run: pip install urllib3==1.23
+      - run: python run_Actions.py
+
+    env:
+        PHONE: ${{ secrets.PHONE }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        RUN: ${{ secrets.RUN }}
+        RUN_END: ${{ secrets.RUN_END }}
