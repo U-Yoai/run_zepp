@@ -44,11 +44,12 @@ my_run = os.environ["RUN"]
 
 try:
     run_end = os.environ["RUN_END"]
+    # run_end = "300"
 except:
     pass
 else:
     if run_end not in "":
         my_run = random.uniform(int(my_run), int(run_end))
-        print('%.0f' % my_run)
+        my_run = '%.0f' % my_run
 
 runing(phone, password, my_run)
