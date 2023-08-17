@@ -26,6 +26,7 @@ def runing(phone, password, my_run):
     r = requests.post(url=in_url, headers=head_, data=js_, verify=False)
     parse.unquote(phone)
     code = 200
+    print(r.json())
 
     if code == r.status_code:
         print(f"成功执行！已跑{my_run}步" + '\n========')
@@ -36,7 +37,8 @@ def runing(phone, password, my_run):
 phone = os.environ["PHONE"]
 password = os.environ["PASSWORD"]
 my_run = os.environ["RUN"]
-
+# phone = ""
+# password = ""
 # my_run = ""
 # run_end = ""
 
